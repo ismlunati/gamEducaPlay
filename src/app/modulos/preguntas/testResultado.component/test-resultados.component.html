@@ -1,0 +1,26 @@
+
+<div *ngIf="resultados">
+  <h2>Resultados del Test</h2>
+    <p><strong>Número de Preguntas Totales:</strong> {{resultados.numeroPreguntasTotales}}</p>
+    <p><strong>Número de Preguntas Acertadas:</strong> {{resultados.numeroPreguntasAcertadas}}</p>
+    <p><strong>Puntuación:</strong> {{resultados.puntuacion}}</p>
+
+    <h3>Preguntas y Respuestas</h3>
+    <div *ngFor="let item of resultados.preguntasRespuestas">
+      <h4>Pregunta: {{item.pregunta.enunciado}}</h4> 
+      <ul>
+        <li *ngFor="let respuesta of item.pregunta.respuestas">
+          {{respuesta.texto}}
+        </li>
+      </ul>
+      <p><strong>Respuesta Seleccionada:</strong> {{item.respuestas[0].texto}}</p> 
+      <p><strong>Respuesta Correcta:</strong> {{item.respuestas[1].texto}}</p> 
+
+      <button 
+              class="btn btn-primary" 
+              [routerLink]="['/asignaturas',idAsignatura , 'test',   idTest,'reportarPregunta', item.pregunta.id]"
+              >
+              Crear Reporte
+            </button>
+    </div>
+</div>

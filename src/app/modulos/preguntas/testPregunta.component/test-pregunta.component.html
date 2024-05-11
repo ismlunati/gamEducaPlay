@@ -1,0 +1,12 @@
+<div *ngIf="pregunta">
+    <h2>{{ pregunta.enunciado }}</h2>
+    
+    <form>
+      <div *ngFor="let respuesta of pregunta.respuestas">
+        <input type="radio" [(ngModel)]="selectedRespuesta" name="respuesta" [value]="respuesta.id"> {{respuesta.texto}}
+      </div>
+    </form>
+    
+    <button (click)="continuar()">Continuar</button>
+  </div>
+  

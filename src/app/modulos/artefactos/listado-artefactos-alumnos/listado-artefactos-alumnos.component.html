@@ -1,0 +1,46 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Coste</th>
+        <th>Estado</th>
+        <th>Temporal</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th *ngIf="!esProfesor() && estadoSeleccionado?.toString()==='COMPRADO'">Canjear</th>
+        <th *ngIf="esProfesor() && estadoSeleccionado?.toString()==='PETICION_DE_USO'">Aceptar canjeo</th>
+        <th *ngIf="esProfesor() && estadoSeleccionado?.toString()==='PETICION_DE_USO'">Rechazar canjeo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let artefactoCompra of artefactoCompras"  >
+        
+        <td>{{artefactoCompra.artefacto.nombre}}</td>
+        <td>{{artefactoCompra.artefacto.descripcion}}</td>
+        <td>{{artefactoCompra.artefacto.costePuntos}}</td>
+        <td>{{artefactoCompra.artefacto.estado}}</td>
+        <td>{{artefactoCompra.artefacto.temporal}}</td>
+        <td>{{artefactoCompra.artefacto.fechaInicio| date: 'dd/MM/yyyy' }}</td>
+        <td>{{artefactoCompra.artefacto.fechaFin| date: 'dd/MM/yyyy' }}</td>
+
+        <td *ngIf="!esProfesor() && estadoSeleccionado==='COMPRADO'">
+          <button class="btn btn-primary" (click)="canjearArtefacto(artefactoCompra.idCompra); $event.stopPropagation()">Canjear</button>
+        </td>
+
+        
+        <td *ngIf="esProfesor() && estadoSeleccionado?.toString()==='PETICION_DE_USO'">
+          <button class="btn btn-primary" (click)="aceptarCanjeo(artefactoCompra.idCompra); $event.stopPropagation()">Aceptar canjeo</button>
+        </td>
+
+        
+        <td *ngIf="esProfesor() && estadoSeleccionado?.toString()==='PETICION_DE_USO'">
+          <button class="btn btn-primary" (click)="denegarCanjeo(artefactoCompra.idCompra); $event.stopPropagation()">Rechazar canjeo</button>
+        </td>
+
+        
+        <!-- etc., agrega más celdas si necesitas -->
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,19 @@
+<p>test-por-alumnos works!</p>
+
+
+
+<div class="container mt-4">
+    <div @fadeInStagger *ngFor="let estadisticaTest of testPorAlumnos" class="mb-4">
+      <h3 class="mb-3 text-primary">{{ estadisticaTest.alumno.usuario.nombre }}</h3>
+      <ul class="list-group">
+        <li *ngFor="let estadistica of estadisticaTest.estadisticas" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ estadistica.test.nombre }}
+          <span *ngFor="let puntuacion of estadistica.puntuacion" class="badge bg-primary rounded-pill">{{ puntuacion }}</span>
+
+
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  

@@ -1,0 +1,15 @@
+<p>tier-list works!</p>
+<div class="container" *ngIf="listaTiers">
+
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let tier of listaTiers">
+        <div class="card mb-3">
+          <div class="card-body" (click)="navegar(tier.id)">
+            <h5 class="card-title">{{ tier.nombre }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

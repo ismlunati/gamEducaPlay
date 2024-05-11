@@ -1,0 +1,44 @@
+
+  
+  <div class="container">
+    <div class="row">
+      <div class="card d-flex justify-content-center" >
+  
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3">
+            <label class="form-label">
+              Nombre:</label>
+              <input class="form-control" type="text" formControlName="nombre">
+            </div>
+              <div class="mb-3">
+            <label class="form-label"> 
+              Email:</label>
+              <input class="form-control" type="text" formControlName="email">
+            </div>
+              <div class="mb-3">
+            <label class="form-label">
+              Nombre Usuario:</label>
+              <input class="form-control" type="email" formControlName="nombreUsuario">
+            </div>
+              <div class="mb-3">
+            <label class="form-label">
+              Contraseña:</label>
+              <input class="form-control" type="password" formControlName="password">
+            </div>
+
+            <div class="mb-3">
+            <label class="form-label">Rol:</label>
+            <select class="form-control" formControlName="rol">
+              <option value="">Selecciona una opción</option>
+              <option value="ROL_ADMIN">Admin</option>
+              <option value="ROL_USER">User</option>
+            </select>
+            </div>
+          
+            <button type="submit">Registrarse</button>
+          </form>
+  
+      </div>
+    </div>
+  </div>

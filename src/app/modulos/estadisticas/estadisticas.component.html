@@ -1,0 +1,48 @@
+<div>Div de pruibeba</div>
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <button class="btn btn-lg btn-primary mx-2" (click)="mostrarBotones('primero')" @slideFromLeft>Estadisticas por
+            preguntas</button>
+        <button class="btn btn-lg btn-secondary mx-2" (click)="mostrarBotones('segundo')" @slideFromLeft>Estadisticas
+            por test</button>
+        <button class="btn btn-lg btn-secondary mx-2" (click)="mostrarBotones('tercero')"
+            @slideFromRight>Reportes</button>
+        <button class="btn btn-lg btn-secondary mx-2" (click)="mostrarBotones('cuarto')"
+            @slideFromRight>Tier List</button>
+    </div>
+
+    <div *ngIf="grupoBotones === 'primero'" class="text-center mt-3">
+        <button class="btn btn-success mx-2 boton-estilo" (click)="navegar('preguntasPorTemas')">Preguntas por
+            temas</button>
+        <button class="btn btn-info mx-2 boton-estilo" (click)="navegar('preguntasPorAlumnos')">Preguntas por
+            alumnos</button>
+    </div>
+
+    <div *ngIf="grupoBotones === 'segundo'" class="text-center mt-3">
+        <button class="btn btn-danger mx-2 boton-estilo" (click)="navegar('testPorTest')">Test por test</button>
+        <button class="btn btn-warning mx-2 boton-estilo" (click)="navegar('testPorAlumnos')">Test por alumnos</button>
+    </div>
+
+    <div *ngIf="grupoBotones === 'tercero'" class="text-center mt-3">
+        <button class="btn btn-danger mx-2 boton-estilo" (click)="navegar('reportesRealizados')">Reportes realizados por
+            alumnos</button>
+        <button class="btn btn-warning mx-2 boton-estilo" (click)="navegar('preguntasReportadas')">Nº preguntas
+            reportadas</button>
+    </div>
+
+
+
+    <div *ngIf="grupoBotones === 'cuarto'" class="text-center mt-3">
+        <button class="btn btn-danger mx-2 boton-estilo" (click)="navegar('crearTierList')">Crear tierList</button>
+        <button class="btn btn-warning mx-2 boton-estilo" (click)="navegar('verTierList')">Ver tierLists</button>
+    </div>
+
+
+
+</div>
+
+
+
+
+<router-outlet></router-outlet>

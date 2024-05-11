@@ -1,0 +1,53 @@
+<p>anadir-logros works!</p>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form [formGroup]="logroForm" (ngSubmit)="metodoActualizarCrear()" class="mt-4">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del logro</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Introduce el nombre">
+            <small class="text-danger" *ngIf="logroForm.get('nombre')?.touched && logroForm.get('nombre')?.errors">
+              {{getValidacionNombre()}}
+            </small>
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción del logro</label>
+            <input type="text" class="form-control" id="descripcion" formControlName="descripcion" placeholder="Introduce la descripción">
+            <small class="text-danger" *ngIf="logroForm.get('descripcion')?.touched && logroForm.get('descripcion')?.errors">
+              {{getValidacionNombre()}}
+            </small>
+          </div>
+  
+
+
+          <div formGroupName="artefactoLogros">
+            <div class="mb-3">
+              <label for="desbloquear" class="form-label">Desbloquear</label>
+              <input type="checkbox" id="desbloquear" class="form-check-input" formControlName="desbloquear" >
+            </div>
+        
+            <div class="mb-3">
+              <label for="obtener" class="form-label">Obtener</label>
+              <input type="checkbox" id="obtener" class="form-check-input" formControlName="obtener" >
+            </div>
+        
+            <div class="mb-3">
+              <label for="artefacto" class="form-label">Artefacto</label>
+              <select class="form-control" id="artefacto" formControlName="artefacto">
+                <option *ngFor="let artefacto of artefactosAsignatura" [value]="artefacto.id">{{ artefacto.nombre }}</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          
+          <button type="submit" class="btn btn-primary" *ngIf="esProfesor()">
+            <span *ngIf="idLogro!==0">Actualizar Asignatura</span>
+            <span *ngIf="idLogro==0">Crear Asignatura</span>
+        </button>
+          <button type="button" style="margin-left: 20px;" class="btn btn-secondary ml-10" [routerLink]="['/asignaturas',idAsignatura,'logros','listado']">Volver</button>
+        </form>
+      </div>
+    </div>
+  </div>

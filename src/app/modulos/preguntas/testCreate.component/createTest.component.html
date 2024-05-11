@@ -1,0 +1,70 @@
+<form [formGroup]="testForm" (ngSubmit)="onSubmit($event)">
+
+  <!-- Nombre -->
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre">
+  </div>
+
+  <!-- Descripción -->
+  <div class="form-group">
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" formControlName="descripcion">
+  </div>
+
+  <!-- Número de Preguntas -->
+  <div class="form-group">
+    <label for="numeroPreguntas">Número de Preguntas:</label>
+    <input type="number" id="numeroPreguntas" formControlName="numeroPreguntas">
+  </div>
+
+  <!-- Lista de Temas -->
+  <div class="form-group">
+    <label for="listaTemas">Lista de Temas:</label>
+    <div *ngFor="let control of listaTemas.controls; let i = index">
+      <input type="checkbox" [formControl]="toFormControl(control)" (change)="resetSelectedPreguntas()">
+      {{temas[i].nombre}}
+    </div>
+  </div>
+  
+
+  <!-- Visible -->
+  <div class="form-group">
+    <label for="visible">Visible:</label>
+    <input type="checkbox" id="visible" formControlName="visible">
+  </div>
+
+  <!-- Preguntas Elegibles -->
+  <div class="form-group">
+    <label for="preguntasElegibles">Preguntas Elegibles:</label>
+    <input type="checkbox" id="preguntasElegibles" formControlName="preguntasElegibles" (change)="onCheckboxChange()" />
+
+  </div>
+
+  <!-- Fecha de Inicio -->
+  <div class="form-group">
+    <label for="fechaInicio">Fecha de Inicio:</label>
+    <input type="date" id="fechaInicio" formControlName="fechaInicio">
+  </div>
+
+  <!-- Fecha de Fin -->
+  <div class="form-group">
+    <label for="fechaFin">Fecha de Fin:</label>
+    <input type="date" id="fechaFin" formControlName="fechaFin">
+  </div>
+
+  <button (click)="onSubmit($event)">Crear nuevo test</button>
+</form>
+
+<div *ngIf="testForm.get('preguntasElegibles')?.value">
+  <h2>Preguntas Elegibles</h2>
+  <ul>
+    <li *ngFor="let pregunta of elegiblePreguntas">
+      <input type="checkbox" 
+        [disabled]="shouldDisableCheckbox(pregunta)"
+        (change)="toggleSelection(pregunta)"
+        >
+          {{pregunta.enunciado}}
+    </li>
+  </ul>
+</div>

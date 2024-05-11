@@ -1,0 +1,88 @@
+<p>test-por-test works!</p>
+
+
+<!-- <div class="container mt-4">
+    <div @fadeInStagger *ngFor="let estadisticaTest of testPorTest" class="mb-4">
+      <h3 class="mb-3 text-primary">{{ estadisticaTest.test.nombre }}</h3>
+      <ul class="list-group">
+        <li *ngFor="let estadistica of estadisticaTest.estadisticas" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ estadistica.alumno.usuario.nombre }}
+          <span *ngFor="let puntuacion of estadistica.puntuacion" class="badge bg-primary rounded-pill">{{ puntuacion }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+   -->
+
+
+
+
+<!-- <div class="container mt-4">
+  <div *ngFor="let estadisticaTest of testPorTest" class="mb-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">{{ estadisticaTest.test.nombre }}</h3>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let estadistica of estadisticaTest.estadisticas"
+          class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <h5 class="mb-0">{{ estadistica.alumno.usuario.nombre }}</h5>
+            <small class="text-muted">Detalles del alumno</small>
+          </div>
+          <div class="badge-container">
+            <span *ngFor="let puntuacion of estadistica.puntuacion" class="badge bg-primary rounded-pill ml-2">{{
+              puntuacion }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="container mt-4">
+  <div *ngFor="let estadisticaTest of testPorTest" class="mb-4">
+    <div class="card border-primary">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">{{ estadisticaTest.test.nombre }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="list-group">
+          <a *ngFor="let estadistica of estadisticaTest.estadisticas" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">{{ estadistica.alumno.usuario.nombre }}</h5>
+              <p class="mb-1 text-muted">Detalles del alumno</p>
+            </div>
+            <div>
+              <span *ngFor="let puntuacion of estadistica.puntuacion" class="badge bg-primary rounded-pill ml-1">{{ puntuacion }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container mt-4">
+  <div @fadeInStagger *ngFor="let estadisticaTest of testPorTest" class="mb-4">
+    <div class="card border-primary">
+      <div class="card-header bg-info text-white" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+        <h4 class="mb-0">{{ estadisticaTest.test.nombre }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="list-group">
+          <a *ngFor="let estadistica of estadisticaTest.estadisticas" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">{{ estadistica.alumno.usuario.nombre }}</h5>
+              <p class="mb-1 text-muted">Detalles del alumno</p>
+            </div>
+            <div>
+              <span *ngFor="let puntuacion of estadistica.puntuacion" class="badge bg-primary rounded-pill ml-1">{{ puntuacion }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

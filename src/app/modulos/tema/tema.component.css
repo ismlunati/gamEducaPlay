@@ -1,0 +1,14 @@
+
+  .tabla-fila {
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+  }
+  
+  .tabla-fila:hover {
+    transform: scale(1.1);  /* Ajusta el valor según lo grande que quieras que sea la ampliación */
+  }
+  
+
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }

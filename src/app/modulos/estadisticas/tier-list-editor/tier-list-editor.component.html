@@ -1,0 +1,54 @@
+<div class="container-fluid mt-4" *ngIf="alumnoTiers">
+  <div cdkDropListGroup>
+    <div class="row">
+      <!-- Columna de Alumnos No Asignados -->
+      <div class="col-12 col-md-6 mb-3">
+        <div class="card shadow">
+          <div class="card-header text-white bg-primary">
+            <!-- Aumento del tamaño de fuente y cambio de color para mejorar la visibilidad -->
+            <h4 class="card-title" style="font-size: 1.5rem; color: #fff;">Alumnos No Asignados</h4>
+          </div>
+          <div class="card-body">
+            <div cdkDropList [cdkDropListData]="alumnoTiers.listaAlumnos" class="example-list"
+              (cdkDropListDropped)="drop($event,'listaAlumnos')">
+              <div *ngFor="let item of alumnoTiers.listaAlumnos; trackBy: trackByFn" cdkDrag class="example-box">
+                {{ item.usuario.nombre }}
+              </div>
+              <div *ngIf="!alumnoTiers.listaAlumnos.length" class="empty-tier-placeholder">Arrastra Alumnos Aquí</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna de Tiers -->
+      <div class="col-12 col-md-6 mb-3">
+        <div *ngFor="let list of alumnoTiers.tierList.tiers; let i = index; trackBy: trackByFn"
+          class="card shadow-sm mb-2">
+          <div class="card-header" [ngStyle]="{'background-color': list.color}">
+            <!-- Aumento del tamaño de fuente y ajuste de color para mejorar el contraste -->
+            <h4 class="card-title" style="font-size: 1.5rem; color: #fff;">{{ list.nombre }}</h4>
+          </div>
+          <div class="card-body">
+            <div cdkDropList [cdkDropListData]="list.alumnos" class="example-list"
+              (cdkDropListDropped)="drop($event, list)">
+              <div *ngFor="let alumno of list.alumnos; trackBy: trackByFn" cdkDrag class="example-box"
+                [ngStyle]="{'background-color': list.color}">
+                {{ alumno.usuario.nombre }}
+              </div>
+              <div *ngIf="!list.alumnos.length" class="empty-tier-placeholder">Arrastra Alumnos Aquí</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+  <button class="btn btn-success mt-3" (click)="onSave()">Guardar</button>
+
+</div>
+  
+<div>
+  <button class="btn btn-success mt-3" (click)="goBack()">Volver</button>
+  
+</div>
+</div>

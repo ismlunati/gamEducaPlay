@@ -1,0 +1,51 @@
+<p>anadir-retos works!</p>
+<div class="container mt-4">
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form [formGroup]="retoForm" (ngSubmit)="metodoActualizarCrear()" class="mt-4">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del reto</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Introduce el nombre">
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción del reto</label>
+            <input type="text" class="form-control" id="descripcion" formControlName="descripcion" placeholder="Introduce la descripción">
+          </div>
+          <div class="mb-3">
+            <label for="puntosOtorgados" class="form-label">Puntos Otorgados</label>
+            <input type="number" class="form-control" id="puntosOtorgados" formControlName="puntosOtorgados" placeholder="Introduce los puntos otorgados">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="temporal" formControlName="temporal">
+            <label class="form-check-label" for="temporal">Temporal</label>
+          </div>
+          <div class="mb-3">
+            <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+            <input type="date" class="form-control" id="fechaInicio" formControlName="fechaInicio" placeholder="Selecciona la fecha de inicio">
+          </div>
+          <div class="mb-3">
+            <label for="fechaFin" class="form-label">Fecha de Fin</label>
+            <input type="date" class="form-control" id="fechaFin" formControlName="fechaFin" placeholder="Selecciona la fecha de fin">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="automatico" formControlName="automatico">
+            <label class="form-check-label" for="automatico">Automatico</label>
+          </div>
+          <div class="mb-3">
+            <label for="logro" class="form-label">Logro</label>
+            <select class="form-control" id="logro" formControlName="logro">
+              <option *ngFor="let logro of logrosAsignatura" [ngValue]="logro">{{ logro.nombre }}</option>
+            </select>
+          </div>
+    
+          <button type="submit" class="btn btn-primary" *ngIf="esProfesor()">
+            <span *ngIf="idReto !== 0">Actualizar Reto</span>
+            <span *ngIf="idReto == 0">Crear Reto</span>
+          </button>
+          <button type="button" style="margin-left: 20px;" class="btn btn-secondary ml-10" [routerLink]="['/asignaturas',idAsignatura,'retos','listado']">Volver</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

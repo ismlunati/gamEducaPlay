@@ -1,0 +1,35 @@
+<p>listado-logros works!</p>
+<div class="container mt-4">
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th *ngIf="esProfesor()">Eliminar</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let logro of logros " (click)="navegar(logro.id)">
+              
+              <td>{{logro.nombre}}</td>
+              <td>{{logro.descripcion}}</td>
+              <td *ngIf="esProfesor()">
+                <button class="btn btn-primary" (click)="borrarLogro(logro.id); $event.stopPropagation()">Eliminar</button>
+              </td>
+              <!-- etc., agrega más celdas si necesitas -->
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-3">
+            <button class="btn btn-primary" [routerLink]="['/asignaturas', id]">Volver</button>
+          </div>
+          <div class="mt-3" *ngIf="esProfesor()">
+            <button class="btn btn-primary" [routerLink]="['/asignaturas', id,'logros','añadir']">Añadir</button>
+          </div>
+      </div>
+    </div>
+  </div>

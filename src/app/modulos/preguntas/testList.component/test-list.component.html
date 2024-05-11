@@ -1,0 +1,38 @@
+<!-- test-list.component.html -->
+
+<h1>Lista de Tests</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Accion</th>
+      <!-- Añade más columnas según lo necesites -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let test of tests">
+      <td>{{ test.id }}</td>
+      <td>{{ test.nombre }}</td>
+      <td>{{ test.descripcion }}</td>
+      <td>
+        <button (click)="realizarTest(test.id)">Realizar Test</button>
+      </td>
+      <!-- Añade más celdas según lo necesites -->
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="mt-3">
+  <button class="btn btn-primary" [routerLink]="['/asignaturas', idAsignatura]">Volver</button>
+</div>
+
+<div class="mt-3">
+  <button class="btn btn-primary" [routerLink]="['/asignaturas', idAsignatura, 'test', 'reportePregunta']">Ver reportes de la asignatura</button>
+</div>
+<div class="mt-3" *ngIf="esProfesor()">
+  <button class="btn btn-primary" [routerLink]="['/asignaturas', idAsignatura,'test','añadir']">Añadir</button>
+</div>

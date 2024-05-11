@@ -1,0 +1,68 @@
+<p>listado-retos works!</p>
+<div class="container mt-4">
+
+  <select [(ngModel)]="estadoSeleccionado" *ngIf="listaSeleccionada ==='Retos inscritos'"  (change)="onSelectChange()">
+    <option *ngFor="let estado of estados" [value]="estado">{{getEstadoValor(estado)}}</option>
+  </select>
+  
+  <select [(ngModel)]="listaSeleccionada" (change)="onSelectListChange()">
+    <option *ngFor="let lista of listas" [value]="lista">{{lista}}</option>
+  </select>
+  
+  
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped" *ngIf="listaSeleccionada ==='Lista retos'">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Puntos Otorgados</th>
+            <th>Temporal</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Fin</th>
+            <th>Automatico</th>
+            <th>Logro</th>
+            <th *ngIf="esProfesor()">Eliminar</th>
+            <th *ngIf="!esProfesor()">Unirse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reto of retosFiltrados" (click)="navegar(reto.id)">
+            <td>{{ reto.nombre }}</td>
+            <td>{{ reto.descripcion }}</td>
+            <td>{{ reto.puntosOtorgados }}</td>
+            <td>{{ reto.temporal }}</td>
+            <td>{{ reto.fechaInicio | date:'yyyy-MM-dd' }}</td>
+            <td>{{ reto.fechaFin  | date:'yyyy-MM-dd'}}</td>
+            <td>{{ reto.automatico }}</td>
+            <td>{{ reto?.logro?.nombre }}</td>
+            <td *ngIf="esProfesor()">
+              <button class="btn btn-primary" (click)="borrarReto(reto.id); $event.stopPropagation()">Eliminar</button>
+            </td>
+            <td *ngIf="!esProfesor()">
+              <button class="btn btn-primary" (click)="unirseReto(reto.id, reto.nombre); $event.stopPropagation()">Unirse Reto</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-lista-estados *ngIf="listaSeleccionada ==='Retos inscritos' && !esProfesor()"
+      [retosAsignados]="retosUsuario"
+      [estadoSeleccionado]="estadoSeleccionado"
+      ></app-lista-estados>
+
+      <app-lista-estados-profesor *ngIf="listaSeleccionada ==='Retos inscritos' && esProfesor()"
+      (recargarRetos)="recargarListaRetos()"
+      [retosAsignados]="retosUsuarioFiltrados"
+      [estadoSeleccionado]="estadoSeleccionado"
+      
+      ></app-lista-estados-profesor>
+      <div class="mt-3">
+        <button class="btn btn-primary" [routerLink]="['/asignaturas', id]">Volver</button>
+      </div>
+      <div class="mt-3" *ngIf="esProfesor()">
+        <button class="btn btn-primary" [routerLink]="['/asignaturas', id,'retos','añadir']">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Logro</th>
+            <th *ngIf="estadoSeleccionado?.toString() === 'EN_CURSO'">FINALZIAR</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reto of retosResultado">
+            <td>{{ reto.nombre }}</td>
+
+            <td>{{ reto?.logro?.nombre }}</td>
+
+
+            <td *ngIf="estadoSeleccionado?.toString() === 'EN_CURSO'">
+                <button class="btn btn-primary"
+                    (click)="finalizarReto(reto); $event.stopPropagation()">Unirse Reto</button>
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>

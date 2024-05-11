@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <form [formGroup]="tierListForm" (ngSubmit)="submit()" class="card">
+    <div class="card-header">
+      <h2 class="card-title">Crear Tier List</h2>
+    </div>
+    <div class="card-body">
+      <!-- TierList Name and Description -->
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre de la TierList</label>
+        <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Nombre de la TierList" required>
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción de la TierList</label>
+        <textarea id="descripcion" formControlName="descripcion" class="form-control" rows="3" placeholder="Descripción de la TierList" required></textarea>
+      </div>
+
+      <!-- Tiers -->
+      <div formArrayName="tiers" class="mb-3">
+        <div *ngFor="let tierGroup of tiers.controls; let i = index" [formGroupName]="i" class="card mb-2">
+          <div class="card-body">
+            <div class="row g-3 align-items-center">
+              <div class="col-md-5">
+                <label class="visually-hidden" for="nombreTier{{i}}">Nombre del Tier</label>
+                <input type="text" id="nombreTier{{i}}" formControlName="nombre" class="form-control" placeholder="Nombre del Tier">
+              </div>
+              <div class="col-md-5">
+                <label class="visually-hidden" for="colorTier{{i}}">Color del Tier</label>
+                <input type="color" id="colorTier{{i}}" formControlName="color" class="form-control form-control-color">
+              </div>
+              <div class="col-md-2">
+                <button type="button" class="btn btn-danger" (click)="removeTier(i)">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addTier()">Añadir Tier</button>
+      </div>
+      
+      <div class="card-footer text-end">
+        <button type="submit" class="btn btn-success" [disabled]="!tierListForm.valid">Crear TierList</button>
+      </div>
+    </div>
+  </form>
+</div>

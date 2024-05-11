@@ -1,0 +1,38 @@
+<p>listado-retos works!</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Alumno</th>
+            <th *ngIf="estadoSeleccionado?.toString() === 'PETICION_ENVIADA'">ACEPTAR</th>
+            <th *ngIf="estadoSeleccionado?.toString() === 'PETICION_ENVIADA'">RECHAZAR</th>
+            <th *ngIf="estadoSeleccionado?.toString() === 'RECHAZADO'
+            || estadoSeleccionado?.toString() === 'COMPLETADO'">CAMBIAR DECISION</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let alumnoReto of tablaData" (click)="navegar(alumnoReto.reto.id)">
+            <td>{{ alumnoReto.nombre }}</td>
+            <td>{{ alumnoReto.descripcion }}</td>
+            <td>{{ alumnoReto.alumno.usuario.nombreUsuario }}</td>
+            <td *ngIf="estadoSeleccionado?.toString() === 'PETICION_ENVIADA'">
+                <button class="btn btn-primary"
+                    (click)="aceptarReto(alumnoReto.idAlumnoReto); $event.stopPropagation()">ACEPTAR</button>
+            </td>
+            <td *ngIf="estadoSeleccionado?.toString() === 'PETICION_ENVIADA'">
+                <button class="btn btn-primary"
+                    (click)="rechazarReto(alumnoReto.idAlumnoReto); $event.stopPropagation()">RECHAZAR</button>
+            </td>
+            <td *ngIf="estadoSeleccionado?.toString() === 'RECHAZADO'
+            || estadoSeleccionado?.toString() === 'COMPLETADO'">
+                <button class="btn btn-primary"
+                    (click)="cambiarDecision(alumnoReto.idAlumnoReto); $event.stopPropagation()">CAMBIAR DECISION</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

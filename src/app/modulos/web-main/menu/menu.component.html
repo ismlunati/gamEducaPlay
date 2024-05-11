@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-light" >
+    <div class="container-fluid margin">
+      <img src="/assets/images/logo.jpg" alt="Logo" class="logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse margin" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cliente/new">Tienda</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/asignaturas">Asignatura</a>
+          </li>
+
+  
+          
+            <!-- <a *ngIf="this.service.usuario.nombreUsuario" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{this.service.usuario.nombreUsuario}}
+            </a>
+  
+            <a *ngIf="!this.service.usuario.nombreUsuario" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a> -->
+
+            <li class="nav-item dropdown">
+            <a *ngIf="(usuario$ | async)?.nombreUsuario" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{(usuario$ | async)?.nombreUsuario}}
+            </a>
+            
+            <a *ngIf="!(usuario$ | async)?.nombreUsuario" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a>
+   
+  
+            <ul class="dropdown-menu">
+              <li *ngIf="!(usuario$ | async)?.nombreUsuario; else cerrar">
+                <a class="dropdown-item" routerLink="/login">Iniciar Sesión</a>
+                <a class="dropdown-item" routerLink="/register">¿Eres nuevo en la web?</a>
+              </li>
+  
+              <ng-template #cerrar>
+                <a class="dropdown-item" (click)=" cerrarSesion()">Cerrar Sesión</a>
+              </ng-template>
+  
+  
+            </ul>
+          </li>
+  
+        </ul>
+  
+      </div>
+    </div>
+  </nav>
+  

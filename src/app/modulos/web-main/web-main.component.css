@@ -1,0 +1,15 @@
+.margin {
+    margin-left: 5%; /* Ajusta el valor según tus necesidades */
+    /* Otros estilos que quieras aplicar */
+  }
+
+
+  /* src/app/navbar/navbar.component.css */
+  .logo {
+    height: 5rem;
+    width: auto;
+  }
+  
+
+
+  /* style="height: 20rem; background-image: url('/assets/images/cuestionario.jpg'); background-size: cover;"> */

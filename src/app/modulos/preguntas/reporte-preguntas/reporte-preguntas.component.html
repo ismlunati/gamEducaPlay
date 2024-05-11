@@ -1,0 +1,45 @@
+<p>listado-artefactos works!</p>
+<div class="container mt-4">
+
+
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped"  *ngIf="reportePreguntas.length > 0; else noData">  
+          <thead>
+            <tr>
+                            
+              <th>Nombre</th>
+              <th>Estado</th>
+              <th>Motivo</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reportePregunta of reportePreguntas">
+              
+              <td>{{reportePregunta.texto}}</td>
+              <td>{{reportePregunta.motivo}}</td>
+              <td>{{reportePregunta.estado}}</td>
+
+
+              <!-- etc., agrega más celdas si necesitas -->
+            </tr>
+          </tbody>
+        </table>
+        <ng-template #noData>
+
+        <div class="alert alert-info text-center d-flex flex-column justify-content-center align-items-center" role="alert"
+        style="height: 200px;">
+          <h4 class="alert-heading">Información</h4>
+          <p>No hay registros disponibles.</p>
+        </div>
+    </ng-template>
+        
+        <div class="mt-3">
+            <button class="btn btn-primary" [routerLink]="['/asignaturas', idAsignatura]">Volver</button>
+          </div>
+
+      </div>
+    </div>
+  </div>

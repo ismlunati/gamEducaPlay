@@ -1,0 +1,16 @@
+<p>preguntas-por-alumnos works!</p>
+
+
+
+<div class="container mt-4">
+    <div @fadeInStagger *ngFor="let pregunta of preguntasAlumnos" class="mb-4">
+      <h3 class="mb-3 text-primary">{{ pregunta.alumno.usuario.nombre }}</h3>
+      <ul class="list-group">
+        <li *ngFor="let estadistica of pregunta.estadisticas" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ estadistica.tema.nombre }}
+          <span class="badge bg-primary rounded-pill">{{ estadistica.numeroDePreguntas }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

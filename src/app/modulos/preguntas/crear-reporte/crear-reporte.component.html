@@ -1,0 +1,20 @@
+<form [formGroup]="reporteForm" (ngSubmit)="onSubmit()" class="container mt-3">
+    <div class="mb-3">
+      <label for="texto" class="form-label">Texto:</label>
+      <input formControlName="texto" type="text" class="form-control" id="texto">
+    </div>
+    <div class="mb-3">
+      <label for="motivo" class="form-label">Motivo:</label>
+      <select formControlName="motivo" class="form-select" id="motivo">
+        <option *ngFor="let motivo of motivoOptions" [value]="motivo">{{getMotivoValue(motivo)}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="estado" class="form-label">Estado:</label>
+      <select formControlName="estado" class="form-select" id="estado">
+        <option *ngFor="let estado of estadoOptions" [value]="estado">{{getEstadoValue(estado)}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+  

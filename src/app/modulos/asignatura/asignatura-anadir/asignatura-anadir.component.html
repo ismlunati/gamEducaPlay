@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form [formGroup]="asignaturaForm" (ngSubmit)="metodoActualizarCrear()" class="mt-4">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre de la asignatura</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Introduce el nombre">
+        </div>
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción de la asignatura</label>
+          <input type="text" class="form-control" id="descripcion" formControlName="descripcion" placeholder="Introduce la descripción">
+        </div>
+        <div class="mb-3">
+          <label for="curso" class="form-label">Curso de la asignatura</label>
+          <input type="text" class="form-control" id="curso" formControlName="curso" placeholder="Introduce el curso">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          <span *ngIf="idAsignatura!==0">Actualizar Asignatura</span>
+          <span *ngIf="this.idAsignatura==0">Crear Asignatura</span>
+      </button>
+        <button type="button" style="margin-left: 20px;" class="btn btn-secondary ml-10" routerLink="/asignaturas">Volver</button>
+      </form>
+    </div>
+  </div>
+</div>
